@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-
 import 'package:flutter/services.dart';
 import 'package:ios_network_info/ios_network_info.dart';
 
@@ -12,43 +10,87 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
+  String _bssid = 'Unknown BSSID';
+  String _ssid = 'Unknown SSID';
 
   @override
   void initState() {
     super.initState();
-    initPlatformState();
+    fetchAll();
   }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
+  fetchAll() {
+    fetchBssid();
+    fetchSsid();
+  }
+
+  fetchBssid() async {
+    String bssid;
     try {
-      platformVersion = await IosNetworkInfo.platformVersion;
+      bssid = await IosNetworkInfo.bssid;
     } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
+      bssid = 'Failed to get WiFi BSSID.';
     }
+    setBssid(bssid);
+  }
 
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
+  setBssid(String bssid) {
     if (!mounted) return;
-
     setState(() {
-      _platformVersion = platformVersion;
+      _bssid = bssid;
+    });
+  }
+
+  fetchSsid() async {
+    String ssid;
+    try {
+      ssid = await IosNetworkInfo.ssid;
+    } on PlatformException {
+      ssid = 'Failed to get WiFi SSID.';
+    }
+    setSsid(ssid);
+  }
+
+  setSsid(String ssid) {
+    if (!mounted) return;
+    setState(() {
+      _ssid = ssid;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          backgroundColor: Colors.black87,
+          title: const Text('ios_network_info'),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.refresh),
+              onPressed: fetchAll,
+            ),
+          ],
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'SSID: $_ssid',
+                style: Theme.of(context).textTheme.headline,
+              ),
+              SizedBox(height: 12),
+              Text(
+                'BSSID: $_bssid',
+                style: Theme.of(context).textTheme.headline,
+              ),
+              SizedBox(height: 20),
+              Text('ios_network_info'),
+              Text('Flutter plugin example'),
+            ],
+          ),
         ),
       ),
     );

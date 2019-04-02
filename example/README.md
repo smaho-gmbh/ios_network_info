@@ -1,16 +1,9 @@
 # ios_network_info_example
 
-Demonstrates how to use the ios_network_info plugin.
+Demonstrates how to use the `ios_network_info` plugin.
 
-## Getting Started
+## About the example
 
-This project is a starting point for a Flutter application.
+In the example app, we fetch the SSID and BSSID on start. There's a refresh app bar action that requests the WiFi SSID and BSSID again. When the phone is not connected to a WiFi network, both getters return `null`.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+![ios_network_info example app in action](./ios_network_info.gif)
