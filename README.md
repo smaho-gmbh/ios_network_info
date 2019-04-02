@@ -31,5 +31,5 @@ Note: "Access WiFi Information" capability is not the same as "Wireless Accessor
 
 ## Alternatives
 
-* [`connectivity`](https://pub.dartlang.org/packages/connectivity) plugin lets you get the WiFi SSID (`wifiName`). After []my pull request](https://github.com/flutter/plugins/pull/1331) is merged, you can also get the BSSID of the current WiFi network 
+* [`connectivity`](https://pub.dartlang.org/packages/connectivity) plugin lets you get the WiFi SSID (`wifiName`). After [my pull request](https://github.com/flutter/plugins/pull/1331) is merged, you can also get the BSSID of the current WiFi network 
 
