@@ -16,10 +16,8 @@ public class IosNetworkInfoPlugin implements MethodCallHandler {
 
   @Override
   public void onMethodCall(MethodCall call, Result result) {
-    if (call.method.equals("getPlatformVersion")) {
-      result.success("Android " + android.os.Build.VERSION.RELEASE);
-    } else {
-      result.notImplemented();
-    }
+    // This is an iOS only plugin. For Android, you can take a look at
+    // android_wifi_info plugin or the official connectivity plugin
+    result.notImplemented();
   }
 }
