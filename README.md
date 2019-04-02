@@ -25,7 +25,7 @@ Requesting this entitlement successfully is only available if you joined the App
  
 **Add "Access WiFi Information" capability to your app (otherwise, you'll receive `null`s).**
 
-![Don't forget to enable "Access WiFi Information" capability](AccessWifiInformationCapability.png)
+![Don't forget to enable "Access WiFi Information" capability](https://github.com/smaho-gmbh/ios_network_info/raw/master/AccessWifiInformationCapability.png)
 
 Note: "Access WiFi Information" capability is not the same as "Wireless Accessory Configuration".
 
