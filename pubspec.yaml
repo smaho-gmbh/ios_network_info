@@ -2,7 +2,7 @@ name: ios_network_info
 description: Dart plugin package for accessing network information from Flutter. iOS-only plugin.
 version: 0.1.1
 author: Vince Varga <vince.varga@smaho.com>
-homepage: https://eng.smaho.com
+homepage: https://github.com/smaho-gmbh/ios_network_info
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
